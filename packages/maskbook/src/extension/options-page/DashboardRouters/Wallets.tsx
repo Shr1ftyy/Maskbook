@@ -131,6 +131,10 @@ export default function DashboardWalletsRouter() {
     const onCreate = useCallback(() => setOpenCreateWalletDialog({ open: true }), [])
     //#endregion
 
+    //#region import wallet dialog
+    const onImport = useCallback(() => openWalletImport(), [])
+    //#endregion
+
     //#region right icons from mobile devices
     const floatingButtons = [
         {
@@ -176,7 +180,7 @@ export default function DashboardWalletsRouter() {
                     <EthereumStatusBar disableEther BoxProps={{ sx: { justifyContent: 'flex-end' } }} />,
                     <Button
                         variant="contained"
-                        onClick={onCreate}
+                        onClick={onImport}
                         endIcon={<AddCircleIcon />}
                         data-testid="create_button">
                         {t('plugin_wallet_on_create')}
