@@ -44,6 +44,7 @@ import { isETH, isSameAddress } from '../../../web3/helpers'
 import { useAccount } from '../../../web3/hooks/useAccount'
 import { currentSelectedWalletAddressSettings } from '../../../plugins/Wallet/settings'
 import { WalletRPC } from '../../../plugins/Wallet/messages'
+import { Flags } from '../../../utils/flags'
 
 //#region predefined token selector
 const useERC20PredefinedTokenSelectorStyles = makeStyles((theme) =>
@@ -409,14 +410,16 @@ export function DashboardWalletBackupDialog(props: WrappedDialogProps<WalletProp
                 constraintSecondary={false}
                 content={
                     <>
-                        {wallet?.mnemonic.length ? (
+                        {Flags.wallet_mnemonic_words_backup_enabled && wallet?.mnemonic.length ? (
                             <section className={classes.section}>
                                 <ShowcaseBox title={t('mnemonic_words')}>{wallet.mnemonic.join(' ')}</ShowcaseBox>
                             </section>
                         ) : null}
-                        <section className={classes.section}>
-                            <ShowcaseBox title={t('private_key')}>{privateKeyInHex}</ShowcaseBox>
-                        </section>
+                        {Flags.wallet_private_key_backup_enabled ? (
+                            <section className={classes.section}>
+                                <ShowcaseBox title={t('private_key')}>{privateKeyInHex}</ShowcaseBox>
+                            </section>
+                        ) : null}
                     </>
                 }
             />
