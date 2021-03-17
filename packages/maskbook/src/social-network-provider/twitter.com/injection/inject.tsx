@@ -8,6 +8,7 @@ import { injectPostReplacerAtTwitter } from './PostReplacer'
 import { injectPageInspectorDefault } from '../../../social-network/defaults/injectPageInspector'
 import { injectSearchResultBoxAtTwitter } from './SearchResult'
 import { injectToolbarAtTwitter } from './Toolbar'
+// import { VCentCurrentBid } from './VCentCurrentBid'
 
 export function injectPostBoxComposed(signal?: AbortSignal) {
     injectPostDialogAtTwitter(signal)
